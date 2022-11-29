@@ -1,23 +1,18 @@
 bundle: kubernetes
-
+series: jammy
 applications:
   traefik:
     charm: ch:traefik-k8s
     channel: 1.0/stable
     scale: 1
     trust: true
-  traefik-public:
-    charm: ch:traefik-k8s
-    channel: 1.0/stable
-    scale: 1
-    trust: true
-    options:
-      kubernetes-service-annotations: metallb.universe.tf/address-pool=public
+    series: focal
   mysql:
     charm: ch:mysql-k8s
     channel: edge
     scale: 1
     trust: false
+    series: focal
   rabbitmq:
     charm: ch:rabbitmq-k8s
     channel: 3.9/edge
@@ -26,7 +21,6 @@ applications:
   keystone:
     charm: ch:keystone-k8s
     channel: xena/edge
-    series: jammy
     scale: 1
     trust: true
     options:
@@ -37,7 +31,6 @@ applications:
   glance:
     charm: ch:glance-k8s
     channel: xena/edge
-    series: jammy
     scale: 1
     trust: true
     storage:
@@ -45,13 +38,11 @@ applications:
   nova:
     charm: ch:nova-k8s
     channel: xena/edge
-    series: jammy
     scale: 1
     trust: true
   placement:
     charm: ch:placement-k8s
     channel: xena/edge
-    series: jammy
     scale: 1
     trust: true
   neutron:
@@ -64,22 +55,17 @@ applications:
   ovn-central:
     charm: ch:ovn-central-k8s
     channel: 21.09/edge
-    series: jammy
     scale: 1
     trust: true
   vault:
     charm: ch:icey-vault-k8s
     channel: stable
     scale: 1
-    resources:
-      vault-image: vault
 
 relations:
 - - mysql:database
   - keystone:database
 - - traefik:ingress
-  - keystone:ingress-internal
-- - traefik-public:ingress
   - keystone:ingress-public
 
 - - mysql:database
@@ -89,8 +75,6 @@ relations:
 - - keystone:identity-service
   - glance:identity-service
 - - traefik:ingress
-  - glance:ingress-internal
-- - traefik-public:ingress
   - glance:ingress-public
 
 - - mysql:database
@@ -104,8 +88,6 @@ relations:
 - - keystone:identity-service
   - nova:identity-service
 - - traefik:ingress
-  - nova:ingress-internal
-- - traefik-public:ingress
   - nova:ingress-public
 
 - - mysql:database
@@ -113,8 +95,6 @@ relations:
 - - keystone:identity-service
   - placement:identity-service
 - - traefik:ingress
-  - placement:ingress-internal
-- - traefik-public:ingress
   - placement:ingress-public
 
 - - mysql:database
@@ -124,8 +104,6 @@ relations:
 - - keystone:identity-service
   - neutron:identity-service
 - - traefik:ingress
-  - neutron:ingress-internal
-- - traefik-public:ingress
   - neutron:ingress-public
 - - vault:insecure-certificates
   - neutron:certificates
