@@ -20,12 +20,12 @@ applications:
     trust: false
   rabbitmq:
     charm: ch:rabbitmq-k8s
-    channel: 3.9/edge
+    channel: 3.9/candidate
     scale: 1
     trust: true
   keystone:
     charm: ch:keystone-k8s
-    channel: yoga/edge
+    channel: 2023.1/candidate
     scale: 1
     trust: true
     options:
@@ -43,12 +43,12 @@ applications:
       neutron-server-image: ghcr.io/openstack-snaps/neutron-server:2023.1
   ovn-central:
     charm: ch:ovn-central-k8s
-    channel: 23.03/edge
+    channel: 23.03/candidate
     scale: 1
     trust: true
   tls-operator:
     charm: tls-certificates-operator
-    channel: edge
+    channel: candidate
     scale: 1
     options:
       generate-self-signed-certificates: true
