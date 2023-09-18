@@ -11,4 +11,4 @@ lightkube
 lightkube-models
 ops
 
-git+https://opendev.org/openstack/charm-ops-sunbeam#egg=ops_sunbeam
+git+https://opendev.org/openstack/charm-ops-sunbeam@stable/2023.1.2#egg=ops_sunbeam
