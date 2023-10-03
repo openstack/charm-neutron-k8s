@@ -42,7 +42,7 @@ applications:
     options:
       debug: true
     resources:
-      neutron-server-image: ghcr.io/openstack-snaps/neutron-server:2023.1
+      neutron-server-image: ghcr.io/canonical/neutron-server:2023.1
   ovn-central:
     charm: ch:ovn-central-k8s
     channel: 23.03/edge
