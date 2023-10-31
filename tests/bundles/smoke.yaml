@@ -20,14 +20,14 @@ applications:
     trust: false
   rabbitmq:
     charm: ch:rabbitmq-k8s
-    channel: 3.12/edge
+    channel: 3.12/candidate
     scale: 1
     trust: true
     options:
       minimum-replicas: 1
   keystone:
     charm: ch:keystone-k8s
-    channel: 2023.2/edge
+    channel: 2023.2/candidate
     scale: 1
     trust: true
     options:
@@ -45,7 +45,7 @@ applications:
       neutron-server-image: ghcr.io/canonical/neutron-server:2023.2
   ovn-central:
     charm: ch:ovn-central-k8s
-    channel: 23.03/edge
+    channel: 23.03/candidate
     scale: 1
     trust: true
   tls-operator:
